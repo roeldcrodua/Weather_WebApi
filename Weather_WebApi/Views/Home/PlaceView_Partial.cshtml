@@ -1,0 +1,26 @@
+﻿@model Weather_WebApi.Models.Place.PlaceInfo
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <form id="getApiForm" method="post">
+        <h3>Place Details</h3>
+        <p>
+            <label for="placeName">Select Country</label>
+            <select name="country">
+                <optgroup label="Countries">
+                    <option value="us">United States</option>
+                    <option value="au">Australia</option>
+                    <option value="de">Germany</option>
+                    <option value="gb">Great Britain</option>
+                </optgroup>
+            </select>
+        </p>
+        <p>
+            <label for="contactName">Enter Zip Code:</label>
+            <input type="text" name="Zip" />
+        </p>
+        <input type="button" id="saveContact" value="Get Place" />
+    </form>
+
+}
