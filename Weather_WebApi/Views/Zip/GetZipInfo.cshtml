@@ -1,0 +1,85 @@
+﻿@model Weather_WebApi.Models.Place.ZipInfo
+
+<div>
+    <h4>ZipInfo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CountryAbbreviation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CountryAbbreviation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PlaceName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlaceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StateAbbreviation)
+        </dt>
+    </dl>
+</div>
+<div>
+<h4>Nearby Places</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Place Name</th>
+            <th scope="col">Distance</th>
+            <th scope="col">Zip Code</th>
+            <th scope="col">State Name</th>
+            <th scope="col">State Abbreviation</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Nearby)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.PlaceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Distance) mi
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PostCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.State)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>

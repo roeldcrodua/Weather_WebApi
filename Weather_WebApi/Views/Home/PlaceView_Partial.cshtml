@@ -1,13 +1,14 @@
-﻿@model Weather_WebApi.Models.Place.PlaceInfo
+﻿@model Weather_WebApi.Models.Place.ZipInfo
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    <form id="getApiForm" method="post">
+    
+    <form id="getApiForm" method="get" asp-controller="Zip" asp-action="GetZipInfo" >
         <h3>Place Details</h3>
         <p>
-            <label for="placeName">Select Country</label>
-            <select name="country">
+            <label for="countryName">Select Country</label>
+            <select name="Country" >
                 <optgroup label="Countries">
                     <option value="us">United States</option>
                     <option value="au">Australia</option>
@@ -17,10 +18,14 @@
             </select>
         </p>
         <p>
-            <label for="contactName">Enter Zip Code:</label>
-            <input type="text" name="Zip" />
+            <label for="zipCode">Enter Zip Code:</label>
+            <input type="text" name="Zip" id="zip" />
         </p>
-        <input type="button" id="saveContact" value="Get Place" />
+        <button type="submit" class="btn btn-info mt-3">Get Place</button>
+
     </form>
 
+
 }
+
+
