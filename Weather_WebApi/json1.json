@@ -1,0 +1,26 @@
+{
+  "ip": "99.47.58.248",
+  "location": {
+    "country": "US",
+    "region": "Florida",
+    "city": "Boynton Beach",
+    "lat": 26.52535,
+    "lng": -80.06643,
+    "postalCode": "33424",
+    "timezone": "-04:00",
+    "geonameId": 4148677
+  },
+  "as": {
+    "asn": 7018,
+    "name": "AT&T US - 7018",
+    "route": "99.32.0.0\/12",
+    "domain": "http:\/\/www.att.com",
+    "type": "NSP"
+  },
+  "isp": "AT&T Corp.",
+  "proxy": {
+    "proxy": false,
+    "vpn": false,
+    "tor": false
+  }
+}

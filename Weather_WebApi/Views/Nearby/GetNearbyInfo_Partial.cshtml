@@ -1,0 +1,33 @@
+﻿@model Weather_WebApi.Models.Place.NearbyInfo
+
+<div>
+    <h4>Nearby City/Places</h4>
+    <table class=" w3-table w3-tiny w3-border-top">
+        <thead>
+            <tr>
+                <th scope="col">Place Name</th>
+                <th scope="col">Distance</th>
+                <th scope="col">Zip Code</th>
+                <th scope="col">State Name</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Nearby)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.PlaceName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Distance) mi
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.PostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.State)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

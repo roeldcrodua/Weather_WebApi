@@ -1,0 +1,25 @@
+﻿@model Weather_WebApi.Models.Place.ZipInfo
+
+<div class="grid-container">
+        <h4 class="w3-text-dark-gray w3-border-right">Zipcode Information</h4>
+        <table class=" w3-table w3-tiny">
+            <tr>
+                <th>City Name</th>
+                <th>State Name</th>
+                <th>Country Name</th>
+                <th>ZipCode</th>
+                <th></th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+            <tr class="w3-medium w3-text-white">
+                <td>@Html.DisplayFor(model => model.PlaceName)</td>
+                <td>@Html.DisplayFor(model => model.State) (@Html.DisplayFor(model => model.StateAbbreviation))</td>
+                <td>@Html.DisplayFor(model => model.Country) (@Html.DisplayFor(model => model.CountryAbbreviation))</td>
+                <td>@Html.DisplayFor(model => model.ZipCode)</td>
+                <td></td>
+                <td>@Html.DisplayFor(model => model.Latitude)</td>
+                <td>@Html.DisplayFor(model => model.Longitude)</td>
+            </tr>
+        </table>
+</div>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Weather_WebApi.Models.Weather
 {
-    public class WeatherLocation
+    public class WeatherInfo
     {
         [JsonPropertyName("data")]
         public WeatherData[] Data { get; set; }

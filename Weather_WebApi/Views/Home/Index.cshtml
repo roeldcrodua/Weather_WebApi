@@ -1,8 +1,112 @@
-﻿
+﻿@model Weather_WebApi.Models.Place.ZipInfo
 <div class="text-center">
-    <h1 class="display-4">Weather Web Application</h1>
+    <h1 class="display-4 w3-margin" >RDC Weather Forecast</h1>
 </div>
+<div class="grid-container text-center w3-border-top w3-margin">
+    <div class="grid-container justify-content-center">
+        <label id="CountryLabel" for="countryName" class="w3-padding">
+            Country
+            <select name="Country" id="Country" class="w3-row-padding w3-round-medium w3-gray w3-text-white">
+                <optgroup label="Countries" class="w3-row-padding w3-round-xlarge w3-gray w3-text-white">
+                    <option value="">Select Country</option>
+                    <option value="us">United States</option>
+                    <option value="au">Australia</option>
+                    <option value="de">Germany</option>
+                    <option value="gb">Great Britain</option>
+                    <option value="ph">Philippines</option>
+                    <option value="in">India</option>
+                </optgroup>
+            </select>
+        </label>
+        <label id="ZipLabel" for="zipCode" class="w3-padding">
+            Zip Code
+            <input type="text" name="Zip" id="Zip" placeholder="12345" class="w3-row-padding w3-round-xlarge w3-gray w3-text-white" />
+        </label>
+        <label class="w3-padding ">
+            Current Location
+        </label><label id="CurrentLocation" for="location" class="w3-padding w3-text-white w3-hover-text-teal">
+        </label>
+    </div>
+</div>
+<div id="zipInfo"></div>
+<div id="weatherInfo"></div>
+<div id="nearbyInfo"></div>
 
-<partial name="PlaceView_Partial" />
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+
+    function getLocation() {
+        $.ajax({
+            type: "GET",
+            url: 'api/ip',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, val) {                    
+                    if (key == "city") {
+                        $('#CurrentLocation').append(" " + val);
+                    }
+                    else if (key == "region") {
+                        $('#CurrentLocation').append(" " + val);
+                    }
+                });
+            }
+        });
+    }
+    
+    function getZip() {
+        $.ajax({
+            type: "GET",
+            url: 'api/zip',
+            data: { country: $('#Country').val(), zip: $('#Zip').val() },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#zipInfo').html(data);
+            }
+        });
+    }
+
+    function getNearby() {
+        $.ajax({
+            type: "GET",
+            url: 'api/nearby',
+            data: { country: $('#Country').val(), zip: $('#Zip').val() },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#nearbyInfo').html(data);
+            }
+        });
+    }
+
+    function getWeather() {
+        $.ajax({
+            type: "GET",
+            url: 'api/weather',
+            data: { country: $('#Country').val(), zip: $('#Zip').val() },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#weatherInfo').html(data);
+            }
+        });
+    }
+    $(document).ready(function () {
+
+        $("main").ready(function () {
+            getLocation();
+            getZip();
+            getNearby();
+            getWeather();
+        });
+
+
+        //$("#getWeatherApi").click(function () {
+        $("#Zip").keypress(function () {
+            getZip();
+            getNearby();
+            getWeather();
+        });
+
+    });
+</script>
 

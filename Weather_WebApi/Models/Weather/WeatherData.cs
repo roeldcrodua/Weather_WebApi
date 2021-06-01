@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -9,39 +10,44 @@ namespace Weather_WebApi.Models.Weather
     public class WeatherData
     {
         [JsonPropertyName("rh")]
+        [Display(Name = "Humidity Index")]
         public int Humidity { get; set; }
 
         [JsonPropertyName("pod")]
         public string PartOfDay { get; set; }
 
         [JsonPropertyName("lon")]
-        public static double Longitude { get; set; }
+        public double Longitude { get; set; }
 
         [JsonPropertyName("ob_time")]
+        [Display(Name = "Updated as of ")]
         public string ObservationTime { get; set; }
 
         [JsonPropertyName("country_code")]
-        public static string Country { get; set; }
+        public string Country { get; set; }
 
         [JsonPropertyName("clouds")]
+        [Display(Name = "Cloud Coverage")]
         public int Clouds { get; set; }
 
         [JsonPropertyName("state_code")]
-        public static string StateCode { get; set; }
+        public string StateCode { get; set; }
 
         [JsonPropertyName("city_name")]
-        public static string CityName { get; set; }
+        public string CityName { get; set; }
 
         [JsonPropertyName("wind_spd")]
+        [Display(Name = "Wind")]
         public double WindSpeed { get; set; }
 
-        [JsonPropertyName("wind_cdir_full")]
-        public string WindDirectionFull { get; set; }
+        [JsonPropertyName("wind_cdir")]
+        public string WindDirection { get; set; }
 
         [JsonPropertyName("slp")]
         public float SeaLevelPressure { get; set; }
 
         [JsonPropertyName("vis")]
+        [Display(Name = "Visibility")]
         public double Visibility { get; set; }
 
         [JsonPropertyName("sunset")]
@@ -54,6 +60,7 @@ namespace Weather_WebApi.Models.Weather
         public double Snow { get; set; }
 
         [JsonPropertyName("uv")]
+        [Display(Name = "UV Index")]
         public double UVIndex { get; set; }
 
         [JsonPropertyName("precip")]
@@ -69,27 +76,31 @@ namespace Weather_WebApi.Models.Weather
         public int AirQuality { get; set; }
 
         [JsonPropertyName("lat")]
-        public static double Latitude { get; set; }
+        public double Latitude { get; set; }
 
         [JsonPropertyName("weather")]
         public WeatherSummary WeatherDetail { get; set; }
 
-        public string DescriptionDetail
-        { get { return WeatherDetail.Description; } }
-
         [JsonPropertyName("datetime")]
         public string Hour { get; set; }
 
-        [JsonPropertyName("temp")]
-        public double Temperature { get; set; }
+        private double temperature;
 
+        [JsonPropertyName("temp")]
+        public double Temperature
+        {
+            get { return temperature; }
+            set { temperature = Math.Round(value, 0) ; }
+        }
         [JsonPropertyName("low_temp")]
         public double LowTemperature { get; set; }
 
         [JsonPropertyName("high_temp")]
+        [Display(Name = "High Temperature")]
         public double HighTemperature { get; set; }
 
         [JsonPropertyName("app_temp")]
+        [Display(Name = "Feels like")]
         public double FeelsLikeTemperature { get; set; }
 
         [JsonPropertyName("app_max_temp")]

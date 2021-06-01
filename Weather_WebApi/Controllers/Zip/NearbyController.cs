@@ -12,23 +12,17 @@ using System.Net.Sockets;
 
 namespace Weather_WebApi.Controllers.Zip
 {
-    [Route("api/zip")]
+    [Route("api/nearby")]
     [ApiController]
-    public class ZipController : Controller
+    public class NearbyController : Controller
     {
         [HttpGet]
-        public async Task<PartialViewResult> GetZipInfo(string country, string zip)
-        {
-            var zipDetail = await GetZipDetail(country, zip);
-            return PartialView("GetZipInfo_Partial", zipDetail);
-        }
-
-        public async Task<ZipInfo> GetZipDetail(string country, string zip)
+        public async Task<PartialViewResult> GetNearbyInfo(string country, string zip)
         {
             IpController zc = new IpController();
 
             if (country == "" || country == null)
-            {
+            {   
                 var apiIP = zc.GetIPApiAddress();
                 country = apiIP.Result.Country;
             }
@@ -38,14 +32,16 @@ namespace Weather_WebApi.Controllers.Zip
                 zip = apiIP.Result.Zip;
             }
 
-            ZipInfo zipInfo = null;
-
+            NearbyInfo nearInfo = null;
+            
             using (var client = new HttpClient())
             {
-                var json1 = await client.GetStringAsync("http://api.zippopotam.us/" + country + "/" + zip); ;
-                zipInfo = JsonSerializer.Deserialize<ZipInfo>(json1, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                var json2 = await client.GetStringAsync("http://api.zippopotam.us/nearby/" + country + "/" + zip);
+                nearInfo = JsonSerializer.Deserialize<NearbyInfo>(json2, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
             }
-            return zipInfo;
+            return PartialView("GetNearbyInfo_Partial", nearInfo);
         }
+
     }
 }
