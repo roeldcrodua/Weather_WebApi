@@ -9,6 +9,13 @@
     <div class="w3-medium">@Html.DisplayFor(model => item.ObservationTime)</div>
 </div>
     <div class="grid-container w3-large justify-content-center">
+        <div>
+            @{ 
+                var icon = item.WeatherDetail.Icon;
+                var icon_png = icon + "@2x.png"; 
+                }
+            <img src="~/icons/coded/@icon_png" alt="Weather_Icon" />
+        </div>
         <div class="w3-jumbo">@Html.DisplayFor(model => item.Temperature)°<span class="w3-xxlarge">C</span></div>
         <div class="w3-small">
             <div class="w3-xxlarge w3-margin-left">@Html.DisplayFor(model => item.WeatherDetail.Description)</div>
