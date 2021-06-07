@@ -4,65 +4,58 @@
 
 @foreach (var item in Model.Data)
 {
-<div class="grid-container w3-small justify-content-center">    
+<div class="grid-container w3-small justify-content-center ">
     <div>Updated as of </div><span></span>
     <div class="w3-medium">@Html.DisplayFor(model => item.ObservationTime)</div>
 </div>
-    <div class="grid-container w3-large justify-content-center">
-        <div>
-            @{ 
+<div class="grid-container w3-large justify-content-center">
+    <div>
+        @{
                 var icon = item.WeatherDetail.Icon;
-                var icon_png = icon + "@2x.png"; 
-                }
-            <img src="~/icons/coded/@icon_png" alt="Weather_Icon" />
-        </div>
-        <div class="w3-jumbo">@Html.DisplayFor(model => item.Temperature)°<span class="w3-xxlarge">C</span></div>
-        <div class="w3-small">
-            <div class="w3-xxlarge w3-margin-left">@Html.DisplayFor(model => item.WeatherDetail.Description)</div>
-            <div class="w3-margin-left">The skies will be @Html.DisplayFor(model => item.WeatherDetail.Description). The low will be @Html.DisplayFor(model => item.LowTemp)</div>
-        </div>
+                var icon_png = icon + "@2x.png";
+        }
+        <img src="~/icons/coded/@icon_png" alt="Weather_Icon" />
+    </div>
+    <div class="w3-jumbo">@Html.DisplayFor(model => item.Temperature)°<span class="w3-xxlarge">C</span></div>
+    <div class="w3-small">
+        <div class="w3-xxlarge w3-margin-left">@Html.DisplayFor(model => item.WeatherDetail.Description)</div>
+        <div class="w3-margin-left">The skies will be @Html.DisplayFor(model => item.WeatherDetail.Description). The low will be @Html.DisplayFor(model => item.LowTemperature)</div>
+    </div>
+</div>
+
+<div class="grid-container w3-small justify-content-center">
+    <div class="w3-padding w3-round-large w3-hover-shadow w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">@Html.DisplayNameFor(model => item.FeelsLikeTemperature)</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.FeelsLikeTemperature)</div>
+    </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">@Html.DisplayNameFor(model => item.Humidity)</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.Humidity)%</div>
+    </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">@Html.DisplayNameFor(model => item.Clouds)</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.Clouds)%</div>
+    </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">@Html.DisplayNameFor(model => item.WindSpeed)</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.WindSpeed) m/s   @Html.DisplayFor(model => item.WindDirectionFlow)° @Html.DisplayFor(model => item.WindDirection)</div>
     </div>
 
-    <div class="grid-container w3-medium justify-content-center">
-        <div class="w3-padding w3-round-large w3-hover-blue-gray  w3-margin w3-transparent">
-            <div class="text-capitalize">@Html.DisplayNameFor(model => item.FeelsLikeTemperature)</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.FeelsLikeTemperature)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">@Html.DisplayNameFor(model => item.Humidity)</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Humidity)%</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">@Html.DisplayNameFor(model => item.Clouds)</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Clouds)%</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">@Html.DisplayNameFor(model => item.WindSpeed)</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.WindSpeed) m/s @Html.DisplayFor(model => item.WindDirectionFlow)° @Html.DisplayFor(model => item.WindDirection)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">@Html.DisplayNameFor(model => item.Visibility)</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Visibility) KM</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">Snow</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Snow)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">UV Index</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.UVIndex)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">Precipitation</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Precipitation)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">Sunrise</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Sunrise)</div>
-        </div>
-        <div class="w3-padding w3-round-large  w3-hover-blue-gray  w3-margin">
-            <div class="text-capitalize">Sunset</div>
-            <div class="w3-text-teal">@Html.DisplayFor(model => item.Sunset)</div>
-        </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">@Html.DisplayNameFor(model => item.Visibility)</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.Visibility) KM</div>
     </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">Snow</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.Snow)</div>
+    </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">UV Index</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.UVIndex)</div>
+    </div>
+    <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin w3-light-blue w3-display-container">
+        <div class="w3-text-capitalized">Precipitation</div>
+        <div class="w3-text-teal">@Html.DisplayFor(model => item.Precipitation)</div>
+    </div>
+</div>
 }
