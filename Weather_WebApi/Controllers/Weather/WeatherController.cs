@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -30,7 +32,6 @@ namespace Weather_WebApi.Controllers.Weather
     [ApiController]
     public class WeatherController : Controller
     {
-        private static string API_KEY = "b7d7bfb1cd454189b86c474e627b5d0d";
         public static string unit = string.Empty;
         public static int days;
         public static WeatherInfo currentWeather;
@@ -49,6 +50,7 @@ namespace Weather_WebApi.Controllers.Weather
         public async Task<PartialViewResult> GetCurrentWeatherInfo(string zip, string country)
         {
 
+            string API_KEY = _configuration.GetValue<string>("AuthKey");
             Zip.IpController zc = new Zip.IpController();
 
             if (country == "" || country == null)

@@ -10,7 +10,7 @@ namespace Weather_WebApi.Models.Weather
     public class WeatherData
     {
         [JsonPropertyName("rh")]
-        [Display(Name = "Humidity Index")]
+        [Display(Name = "Humidity")]
         public int Humidity { get; set; }
 
         [JsonPropertyName("pod")]
@@ -27,7 +27,7 @@ namespace Weather_WebApi.Models.Weather
         public string Country { get; set; }
 
         [JsonPropertyName("clouds")]
-        [Display(Name = "Cloud Coverage")]
+        [Display(Name = "Clouds")]
         public int Clouds { get; set; }
 
         [JsonPropertyName("state_code")]
@@ -36,10 +36,16 @@ namespace Weather_WebApi.Models.Weather
         [JsonPropertyName("city_name")]
         public string CityName { get; set; }
 
+        private double wind_speed;
+
         [JsonPropertyName("wind_spd")]
         [Display(Name = "Wind")]
-        public double WindSpeed { get; set; }
-
+        public double WindSpeed 
+        {
+            get { return wind_speed; }
+            set { wind_speed = Math.Round(value, 0); }
+        }
+    
         [JsonPropertyName("wind_cdir")]
         public string WindDirection { get; set; }
 
@@ -52,9 +58,6 @@ namespace Weather_WebApi.Models.Weather
 
         [JsonPropertyName("sunset")]
         public string Sunset { get; set; }
-
-        [JsonPropertyName("dewpt")]
-        public double LowTemp { get; set; }
 
         [JsonPropertyName("snow")]
         public double Snow { get; set; }
@@ -92,16 +95,35 @@ namespace Weather_WebApi.Models.Weather
             get { return temperature; }
             set { temperature = Math.Round(value, 0) ; }
         }
-        [JsonPropertyName("low_temp")]
-        public double LowTemperature { get; set; }
+
+        private double low_temperature;
+
+        [JsonPropertyName("dewpt")]
+        public double LowTemperature 
+        {
+            get { return low_temperature; }
+            set { low_temperature = Math.Round(value, 0); }
+        }
+
+        private double high_temperature;
 
         [JsonPropertyName("high_temp")]
         [Display(Name = "High Temperature")]
-        public double HighTemperature { get; set; }
+        public double HighTemperature 
+        {
+            get { return high_temperature; }
+            set { high_temperature = Math.Round(value, 0); }
+        }
+
+        private double feelsLike_temperature;
 
         [JsonPropertyName("app_temp")]
         [Display(Name = "Feels like")]
-        public double FeelsLikeTemperature { get; set; }
+        public double FeelsLikeTemperature 
+        {
+            get { return feelsLike_temperature; }
+            set { feelsLike_temperature = Math.Round(value, 0); }
+        }
 
         [JsonPropertyName("app_max_temp")]
         public double MaxFeelsLikeTemperature { get; set; }
