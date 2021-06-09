@@ -66,8 +66,17 @@ namespace Weather_WebApi.Models.Weather
         [Display(Name = "UV Index")]
         public double UVIndex { get; set; }
 
+        private double precipitation;
+
         [JsonPropertyName("precip")]
-        public double Precipitation { get; set; }
+        public double Precipitation
+        {
+            get { return precipitation; }
+            set { precipitation = Math.Round(value, 0); }
+        }
+
+        [JsonPropertyName("pop")]
+        public double Probability { get; set; }
 
         [JsonPropertyName("wind_dir")]
         public int WindDirectionFlow { get; set; }
@@ -84,8 +93,29 @@ namespace Weather_WebApi.Models.Weather
         [JsonPropertyName("weather")]
         public WeatherSummary WeatherDetail { get; set; }
 
-        [JsonPropertyName("datetime")]
-        public string Hour { get; set; }
+        private DateTime validDate;
+
+        [JsonPropertyName("valid_date")]
+        public DateTime ValidFullDate
+        {
+            get { return validDate; }
+            set { validDate = DateTime.Parse(value.ToString()); }
+        }
+
+        //[JsonPropertyName("valid_date")]
+        //public DateTime ValidDate
+        //{
+        //    get { return validDate; }
+        //    set { validDate = DateTime.Parse(value.Day.ToString()); }
+        //}
+
+        //[JsonPropertyName("datetime")]
+        //public DateTime ValidDay
+        //{
+        //    get { return validDate; }
+        //    set { validDate = DateTime.Parse(value.DayOfWeek.ToString()); }
+        //}
+
 
         private double temperature;
 

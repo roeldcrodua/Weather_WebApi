@@ -19,5 +19,15 @@ namespace Weather_WebApi.Models.Weather
 
         [JsonPropertyName("city_name")]
         public string CityNameVal { get; set; }
+
+        public double Latitude
+        {
+            get { return double.Parse(Data[0].Latitude.ToString()); }
+        }
+        public double Longitude
+        {
+            get { return double.Parse(Data[0].Longitude.ToString()); }
+        }
+
     }
 }
