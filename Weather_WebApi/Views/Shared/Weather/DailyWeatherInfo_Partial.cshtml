@@ -11,16 +11,35 @@
             var icon_png = icon + ".png";
 
             <li>
-                <div class="w3-padding w3-round-large w3-hover-shadow w3-margin w3-light-blue w3-display-container">
-
-                    <div>
+                <div class="w3-padding w3-round-large w3-hover-shadow w3-margin w3-light-blue w3-display-container justify-content-center">
+                    @{
+                        var fullDate = item.ValidFullDate.ToShortDateString();
+                        var today = DateTime.Now.ToShortDateString();
+                        if (fullDate == today)
+                        {
+                            <div>
+                                <span>Today</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                @{
+                                    var dayOfWeek = item.ValidDay.DayOfWeek.ToString().Substring(0, 3);
+                                    var actualDay = item.ValidDate.Day;
+                                }
+                                <span>@dayOfWeek @actualDay</span>
+                            </div>
+                        }
+                    }
+                    <div class="w3-center">
                         <img width="35" height="35" src="~/icons/coded/@icon_png" alt="Weather_Icon" />
-                        </div>
-                    <div>
+                    </div>
+                    <div class="w3-center">
                         &#128167; @Html.DisplayFor(model => item.Precipitation)%
                     </div>
-                    <div>@Html.DisplayFor(model => item.HighTemperature)°</div>
-                    <div>@Html.DisplayFor(model => item.LowTemperature)°</div>
+                    <div class="w3-large w3-center"><span class="w3-text-red">&#129045;</span>@Html.DisplayFor(model => item.HighTemperature)°</div>
+                    <div class="w3-large w3-center"><span class="w3-text-blue">&#129047;</span>@Html.DisplayFor(model => item.LowTemperature)°</div>
                 </div>
             </li>
         }

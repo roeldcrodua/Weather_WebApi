@@ -99,22 +99,20 @@ namespace Weather_WebApi.Models.Weather
         public DateTime ValidFullDate
         {
             get { return validDate; }
-            set { validDate = DateTime.Parse(value.ToString()); }
+            set { validDate = DateTime.Parse(value.ToShortDateString()); }
         }
 
-        //[JsonPropertyName("valid_date")]
-        //public DateTime ValidDate
-        //{
-        //    get { return validDate; }
-        //    set { validDate = DateTime.Parse(value.Day.ToString()); }
-        //}
-
-        //[JsonPropertyName("datetime")]
-        //public DateTime ValidDay
-        //{
-        //    get { return validDate; }
-        //    set { validDate = DateTime.Parse(value.DayOfWeek.ToString()); }
-        //}
+        public DateTime ValidDate
+        {
+            get { return validDate; }
+            set { validDate = DateTime.Parse(ValidFullDate.Day.ToString()); }
+        }
+                
+        public DateTime ValidDay
+        {
+            get { return validDate; }
+            set { validDate = DateTime.Parse(ValidFullDate.DayOfWeek.ToString()); }
+        }
 
 
         private double temperature;
