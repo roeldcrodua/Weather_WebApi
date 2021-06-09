@@ -29,7 +29,8 @@
     </div>
 </div>
 <div id="zipInfo"></div>
-<div id="weatherInfo"></div>
+<div id="currentWeatherInfo"></div>
+<div id="dailyWeatherInfo"></div>
 <div id="nearbyInfo"></div>
 
 
@@ -79,32 +80,47 @@
         });
     }
 
-    function getWeather() {
+    function getCurrentWeather() {
         $.ajax({
             type: "GET",
-            url: 'api/weather',
-            data: { country: $('#Country').val(), zip: $('#Zip').val() },
+            url: 'api/current',
+            data: { country: $('#Country').val(), zip: $('#Zip').val(), units: "", lat: "", lon: "" },
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $('#weatherInfo').html(data);
+                $('#currentWeatherInfo').html(data);
             }
         });
     }
+
+    function getDailyWeather() {
+        $.ajax({
+            type: "GET",
+            url: 'api/daily',
+            data: { country: $('#Country').val(), zip: $('#Zip').val(), units: "", lat: "", lon: "" },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#dailyWeatherInfo').html(data);
+            }
+        });
+    }
+
     $(document).ready(function () {
 
         $("main").ready(function () {
             getLocation();
             getZip();
             getNearby();
-            getWeather();
+            getCurrentWeather();
+            getDailyWeather();
         });
 
 
         //$("#getWeatherApi").click(function () {
-        $("#Zip").keypress(function () {
+        $("#Zip").keydown(function () {
             getZip();
             getNearby();
-            getWeather();
+            getCurrentWeather();
+            getDailyWeather();
         });
 
     });
