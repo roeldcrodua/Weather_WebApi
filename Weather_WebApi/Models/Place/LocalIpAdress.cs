@@ -14,5 +14,8 @@ namespace Weather_WebApi.Controllers.Zip
 
         [JsonPropertyName("region")]
         public string State { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }
