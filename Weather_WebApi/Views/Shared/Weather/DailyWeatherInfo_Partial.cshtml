@@ -1,0 +1,57 @@
+﻿@model Weather_WebApi.Models.Weather.WeatherInfo
+
+<div><h4 class="w3-text-dark-gray w3-border-top">Daily Weather Forecast </h4></div>
+
+<div class="grid-container w3-small justify-content-center">
+    <ul class="d-inline-flex overflow-auto list-unstyled">
+        @for (int x = 0; x < Model.Data.Count(); x++)
+        {
+            var item = Model.Data[x];
+            var icon = item.WeatherDetail.Icon;
+            var icon_png = icon + ".png";
+
+            <li>
+                <div class="w3-padding w3-round-large w3-hover-shadow w3-margin w3-light-blue w3-display-container">
+
+                    <div>
+                        <img width="35" height="35" src="~/icons/coded/@icon_png" alt="Weather_Icon" />
+                        </div>
+                    <div>
+                        &#128167; @Html.DisplayFor(model => item.Precipitation)%
+                    </div>
+                    <div>@Html.DisplayFor(model => item.HighTemperature)°</div>
+                    <div>@Html.DisplayFor(model => item.LowTemperature)°</div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+@*<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+
+        function getWeatherDataFarenheit() {
+            $.ajax({
+                type: "GET",
+                url: 'api/weather',
+                data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "I" },
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $('#weatherInfo').html(data);
+                }
+            });
+        }
+
+            function getWeatherDataMetric() {
+            $.ajax({
+                type: "GET",
+                url: 'api/weather',
+                data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "" },
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $('#weatherInfo').html(data);
+                }
+            });
+        }
+    </script>*@

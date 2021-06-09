@@ -1,0 +1,170 @@
+﻿@model Weather_WebApi.Models.Weather.WeatherInfo
+
+<div><h4 class="w3-text-dark-gray w3-border-top">Current Weather Forecast </h4></div>
+
+@foreach (var item in Model.Data)
+{
+    <div class="grid-container w3-small justify-content-center ">
+        <div>Updated as of @Html.DisplayFor(model => item.ObservationTime)</div>
+    </div>
+    <div class="grid-container w3-large justify-content-center">
+        <div>
+            @{
+                var icon = item.WeatherDetail.Icon;
+                var icon_png = icon + "@2x.png";
+            }
+            <img src="~/icons/coded/@icon_png" alt="Weather_Icon" />
+        </div>
+        <div class="w3-jumbo">
+            @Html.DisplayFor(model => item.Temperature)°
+        </div>
+        <div>
+            <div class="w3-xlarge"><a href="#" id="unitOption1" class="text-decoration-none" onclick="getWeatherDataFarenheit()">F</a></div>
+            <div class="w3-xlarge"><a href="#" id="unitOption2" class="text-decoration-none" onclick="getWeatherDataMetric()">C</a></div>
+        </div>
+
+        <div class="w3-small">
+            <div class="w3-xxlarge w3-margin-left">@Html.DisplayFor(model => item.WeatherDetail.Description)</div>
+            <div class="w3-margin-left">The skies will be @Html.DisplayFor(model => item.WeatherDetail.Description). The low will be @Html.DisplayFor(model => item.LowTemperature)</div>
+        </div>
+    </div>
+
+    <div class="grid-container w3-small justify-content-center">
+        <div class="w3-round-large w3-hover-shadow w3-margin">
+            <div class="grid-container">
+                <div class="w3-xxlarge">&#127777; </div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal d-inline-flex">@Html.DisplayNameFor(model => item.FeelsLikeTemperature)</div>
+                    <div> @Html.DisplayFor(model => item.FeelsLikeTemperature)&#176;</div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow w3-margin">
+            <div class="grid-container">
+                <div class="w3-large w3-margin">&#128531; </div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">@Html.DisplayNameFor(model => item.Humidity)</div>
+                    <div>@Html.DisplayFor(model => item.Humidity)%</div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-xlarge w3-margin">	&#9729; </div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">@Html.DisplayNameFor(model => item.Clouds)</div>
+                    <div> @Html.DisplayFor(model => item.Clouds)%</div>
+                </div>
+                </div>
+            </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-xlarge w3-margin">&#127788;</div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">@Html.DisplayNameFor(model => item.WindSpeed)</div>
+                    <div> @Html.DisplayFor(model => item.WindSpeed) mps</div>   <div>@Html.DisplayFor(model => item.WindDirectionFlow)° @Html.DisplayFor(model => item.WindDirection)</div>
+                </div>
+                </div>
+            </div>
+
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-xlarge w3-margin">&#128065; </div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">@Html.DisplayNameFor(model => item.Visibility)</div>
+                    <div>@Html.DisplayFor(model => item.Visibility) KM</div>
+                </div>
+                </div>
+            </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-large w3-margin">&#10052;</div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">Snow</div>
+                    <div> @Html.DisplayFor(model => item.Snow)</div>
+                </div>
+                </div>
+            </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-large w3-margin">&#x263C;</div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">UV Index</div>
+                    <div> @Html.DisplayFor(model => item.UVIndex)</div>
+                </div>
+                </div>
+            </div>
+        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+            <div class="grid-container">
+                <div class="w3-large w3-margin"> &#128167; </div>
+                <div>
+                    <div class="w3-text-capitalized w3-text-teal">Prec</div>
+                    <div>@Html.DisplayFor(model => item.Probability) %</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            }
+
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script type="text/javascript">
+
+    function getCurrentWeatherDataFarenheit() {
+        $.ajax({
+            type: "GET",
+            url: 'api/current',
+            data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "I" },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#currentWeatherInfo').html(data);
+            }
+        });
+    }
+
+        function getCurrentWeatherDataMetric() {
+        $.ajax({
+            type: "GET",
+            url: 'api/current',
+            data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "" },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#currentWeatherInfo').html(data);
+            }
+        });
+    }
+
+        function getDailyWeatherDataFarenheit() {
+        $.ajax({
+            type: "GET",
+            url: 'api/daily',
+            data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "I" },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#dailyWeatherInfo').html(data);
+            }
+        });
+    }
+
+        function getDailyWeatherDataMetric() {
+        $.ajax({
+            type: "GET",
+            url: 'api/daily',
+            data: { lat: @Model.Latitude, lon: @Model.Longitude, units: "" },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#dailyWeatherInfo').html(data);
+            }
+        });
+    }
+
+    function getWeatherDataFarenheit() {
+        getCurrentWeatherDataFarenheit();
+        getDailyWeatherDataFarenheit();
+    }
+
+    function getWeatherDataMetric() {
+        getCurrentWeatherDataMetric();
+        getDailyWeatherDataMetric();
+    }
+            </script>
