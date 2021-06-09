@@ -18,7 +18,7 @@ namespace Weather_WebApi.Controllers.Zip
     public class IpController : Controller
     {
         [HttpGet]
-            public async Task<LocalIpAdress> GetIPApiAddress()
+        public async Task<LocalIpAdress> GetIPApiAddress()
         {
             var API_Key = "20ba7d98306ce226f8bc4d5b44da15826b927c3c2a5b9cd6d92f8278";
             string ipV = null;
@@ -42,7 +42,7 @@ namespace Weather_WebApi.Controllers.Zip
                 IPInfo = JsonSerializer.Deserialize<LocalIpAdress>(jsonIp, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                 return IPInfo;
             }
-            
+
         }
     }
 }

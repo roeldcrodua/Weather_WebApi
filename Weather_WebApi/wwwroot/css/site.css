@@ -77,15 +77,12 @@ body {
     text-align: center;
 }
 
-/*.grid-container {
-    display: inline-flex;
-    width: 100%;
-    border: solid;
-}*/
 
 .grid-container {
-    display: inline-flex;
     width: 100%;
-
+    display: flex;
+    flex-wrap: wrap;
 }
+
+
 
