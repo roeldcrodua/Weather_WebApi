@@ -1,6 +1,6 @@
 ﻿@model Weather_WebApi.Models.Weather.WeatherInfo
 
-<div><h4 class="w3-text-dark-gray w3-border-top">Daily Weather Forecast </h4></div>
+<div class="w3-center"><h4 class="w3-text-dark-gray font-weight-bold">Daily Weather Forecast </h4></div>
 
 <div class="grid-container w3-small justify-content-center">
     <ul class="d-inline-flex overflow-auto list-unstyled">
@@ -38,8 +38,8 @@
                     <div class="w3-center">
                         &#128167; @Html.DisplayFor(model => item.Precipitation)%
                     </div>
-                    <div class="w3-large w3-center"><span class="w3-text-red">&#129045;</span>@Html.DisplayFor(model => item.HighTemperature)°</div>
-                    <div class="w3-large w3-center"><span class="w3-text-blue">&#129047;</span>@Html.DisplayFor(model => item.LowTemperature)°</div>
+                    <div class="w3-large w3-center"><span class="w3-text-red">&#x2B06;</span>@Html.DisplayFor(model => item.HighTemperature)°</div>
+                    <div class="w3-large w3-center"><span class="w3-text-blue">&#x2B07;</span>@Html.DisplayFor(model => item.LowTemperature)°</div>
                 </div>
             </li>
         }

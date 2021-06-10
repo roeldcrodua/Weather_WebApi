@@ -1,10 +1,10 @@
 ﻿@model Weather_WebApi.Models.Place.ZipInfo
 <div class="text-center">
-    <h1 class="display-4 w3-margin" >RDC Weather Forecast</h1>
+    <h2 class="w3-margin font-weight-bold text-uppercase">&#9925;  &#9736;D&#9790; Wea&#x2602;her F&#9788;recas&#x2602;  &#x26C4;</h2>
 </div>
-<div class="grid-container text-center w3-border-top w3-margin">
+<div class="grid-container text-center w3-margin w3-small">
     <div class="grid-container justify-content-center">
-        <label id="CountryLabel" for="countryName" class="w3-padding">
+        <label id="CountryLabel" for="countryName" class="w3-padding font-weight-bold">
             Country
             <select name="Country" id="Country" class="w3-row-padding w3-round-medium w3-gray w3-text-white">
                 <optgroup label="Countries" class="w3-row-padding w3-round-xlarge w3-gray w3-text-white">
@@ -18,20 +18,18 @@
                 </optgroup>
             </select>
         </label>
-        <label id="ZipLabel" for="zipCode" class="w3-padding">
+        <label id="ZipLabel" for="zipCode" class="w3-padding font-weight-bold">
             Zip Code
             <input type="text" name="Zip" id="Zip" placeholder="12345" class="w3-row-padding w3-round-xlarge w3-gray w3-text-white" />
         </label>
-        <label class="w3-padding ">
-            Current Location
-        </label><label id="CurrentLocation" for="location" class="w3-padding w3-text-white w3-hover-text-teal">
-        </label>
+        <label class="w3-large w3-text-teal font-weight-bold">&#x1F3E0;</label>
+            <label id="CurrentLocation" for="location" class="pt-2 pl-2 w3-text-white w3-hover-text-teal"></label>
     </div>
 </div>
 <div id="zipInfo"></div>
 <div id="currentWeatherInfo"></div>
 <div id="dailyWeatherInfo"></div>
-<div id="nearbyInfo"></div>
+<div class="w3-centered" id="nearbyInfo"></div>
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

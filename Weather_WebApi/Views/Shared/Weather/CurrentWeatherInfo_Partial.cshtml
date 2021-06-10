@@ -1,6 +1,6 @@
 ﻿@model Weather_WebApi.Models.Weather.WeatherInfo
 
-<div><h4 class="w3-text-dark-gray w3-border-top">Current Weather Forecast </h4></div>
+<div class="w3-center"><h4 class="w3-text-dark-gray font-weight-bold">Current Weather Forecast </h4></div>
 
 @foreach (var item in Model.Data)
 {
@@ -25,12 +25,12 @@
 
         <div class="w3-small">
             <div class="w3-xxlarge w3-margin-left">@Html.DisplayFor(model => item.WeatherDetail.Description)</div>
-            <div class="w3-margin-left">The skies will be @Html.DisplayFor(model => item.WeatherDetail.Description). The low will be @Html.DisplayFor(model => item.LowTemperature)</div>
+            <div class="w3-margin-left w3-medium">The sky will be @item.WeatherDetail.Description.ToLower(). The low will be @Html.DisplayFor(model => item.LowTemperature).</div>
         </div>
     </div>
 
     <div class="grid-container w3-small justify-content-center">
-        <div class="w3-round-large w3-hover-shadow w3-margin">
+        <div class="w3-round-large ">
             <div class="grid-container">
                 <div class="w3-xxlarge">&#127777; </div>
                 <div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow w3-margin">
+        <div class="w3-padding w3-round-large">
             <div class="grid-container">
                 <div class="w3-large w3-margin">&#128531; </div>
                 <div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large">
             <div class="grid-container">
                 <div class="w3-xlarge w3-margin">	&#9729; </div>
                 <div>
@@ -57,7 +57,7 @@
                 </div>
                 </div>
             </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large ">
             <div class="grid-container">
                 <div class="w3-xlarge w3-margin">&#127788;</div>
                 <div>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large ">
             <div class="grid-container">
                 <div class="w3-xlarge w3-margin">&#128065; </div>
                 <div>
@@ -76,7 +76,7 @@
                 </div>
                 </div>
             </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large ">
             <div class="grid-container">
                 <div class="w3-large w3-margin">&#10052;</div>
                 <div>
@@ -85,7 +85,7 @@
                 </div>
                 </div>
             </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large ">
             <div class="grid-container">
                 <div class="w3-large w3-margin">&#x263C;</div>
                 <div>
@@ -94,7 +94,7 @@
                 </div>
                 </div>
             </div>
-        <div class="w3-padding w3-round-large  w3-hover-shadow  w3-margin">
+        <div class="w3-padding w3-round-large ">
             <div class="grid-container">
                 <div class="w3-large w3-margin"> &#128167; </div>
                 <div>
