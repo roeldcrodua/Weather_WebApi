@@ -10,3 +10,4 @@ Web Api Project
 http://rdcweather.azurewebsites.net/
 
 ## Website snippet:
+![image](https://user-images.githubusercontent.com/65931708/132297248-b81405e3-7d39-4d60-ba00-f13cf840cb45.png)
