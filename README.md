@@ -6,6 +6,15 @@ Web Api Project
 - It can include current weather forecat and daily weather forecast.
 - You can use the zippopotam.us for getting the zip code api and the nearby places.
 
+## Technologies Used
+- C#
+- ASP.net MVC
+- Azure Services
+- Bootstrap
+- HTML5
+- CSS3
+- Javascript
+
 ## Website address
 http://rdcweather.azurewebsites.net/
 
